@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
+import Gallery from "./page/Gallery";
+import UploadImage from "./page/write/UploadImage";
+import Write from "./page/write/Write";
+import { Main } from "./layout/Main";
+import View from "./page/View";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Main>
+        <Routes>
+          <Route path="/" element={<Gallery />}></Route>
+          <Route path="/write/upload-image" element={<UploadImage />}></Route>
+          <Route path="/write/write" element={<Write />}></Route>
+          <Route path="/view/:id" element={<View />}></Route>
+          {/* <Route path="/deploy" element={<Deploy />}></Route>
+        <Route path="/frame" element={<Frame />}></Route>
+        <Route path="/monitor" element={<Monitor />}></Route>
+        <Route path="/result/:type" element={<Result />}></Route>{" "} */}
+        </Routes>
+      </Main>
+      <Footer />
+    </>
   );
 }
 
